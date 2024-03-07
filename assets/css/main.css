@@ -3511,7 +3511,7 @@ input, select, textarea {
 				}
 
 			#banner .content .image {
-				border-radius: 0%;
+				border-radius: 0;
 				display: inline-block;
 				height: 18em;
 				margin-left: 3em;
@@ -3520,7 +3520,7 @@ input, select, textarea {
 			}
 
 				#banner .content .image img {
-					border-radius: 0%;
+					border-radius: 0;
 					display: block;
 					width: 100%;
 				}
