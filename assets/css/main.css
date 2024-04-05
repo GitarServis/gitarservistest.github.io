@@ -3060,7 +3060,7 @@ input, select, textarea {
 			background-image: url("images/overlay.png");
 			content: '';
 			display: block;
-			height: 50%;
+			height: 100%;
 			left: 0;
 			top: 0;
 			width: 100%;
