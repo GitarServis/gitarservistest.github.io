@@ -3055,7 +3055,15 @@ input, select, textarea {
 		.spotlight:nth-last-of-type(20) {
 			z-index: 20;
 		}
-
+                 .spotlight:before {
+    background-image: url(images/popravka-polomljene-naprsle-glave-servis-za-gitare-kragujevac.jpg);
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
 		
 		}
 
