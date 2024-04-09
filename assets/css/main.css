@@ -3505,15 +3505,7 @@ input, select, textarea {
 					font-size: 2.5em;
 					margin: 0;
 				}
-.spotlight:before {
-            background-image: url("images/popravka-polomljene-naprsle-glave-servis-za-gitare-kragujevac");
-            content: '';
-            display: block;
-            height: 100%;
-            left: 0;
-            top: 0;
-            width: 100%;
-}
+
 				#banner .content header p {
 					margin: 0.5em 0 0 0;
 					top: 0;
