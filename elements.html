@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,24 +8,36 @@
     <title>Gallery</title>
     <style>
         .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
         }
         .gallery img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            margin: 10px;
+            width: 100%;
+            height: auto;
         }
     </style>
 </head>
 <body>
     <div class="gallery">
-        <img src="slika1.jpg" alt="Slika 1">
-        <img src="slika2.jpg" alt="Slika 2">
-        <img src="slika3.jpg" alt="Slika 3">
-        <!-- Dodajte ostale slike ovdje -->
+        <!-- Ovde možete postaviti slike -->
     </div>
+    <script>
+        // Dodajte slike u galeriju
+        const gallery = document.querySelector('.gallery');
+        const images = [
+            'slika1.jpg',
+            'slika2.jpg',
+            'slika3.jpg'
+            // Dodajte ostale slike ovdje
+        ];
+
+        images.forEach(image => {
+            const img = document.createElement('img');
+            img.src = image;
+            img.alt = 'Slika';
+            gallery.appendChild(img);
+        });
+    </script>
 </body>
 </html>
