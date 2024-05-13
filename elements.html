@@ -5,7 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Gallery</title>
     <style>
-        /* CSS stilovi su isti kao u prethodnom primeru */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('pozadina.jpg') center/cover no-repeat; /* Postavljanje pozadinske slike */
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Providnost na belu pozadinu */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 20px;
+        }
+        .gallery-item {
+            position: relative; /* Dodajemo relativnu poziciju kako bismo postavili ikonu za brisanje */
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out; /* Dodajemo animaciju prelaska preko slike */
+        }
+        .gallery-item img:hover {
+            transform: scale(1.1); /* Zumiranje slike kada se pređe mišem preko nje */
+        }
+        .delete-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            padding: 5px 10px;
+            background-color: #f44336;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .delete-btn:hover {
+            opacity: 0.8;
+        }
+        .delete-btn.hidden {
+            display: none;
+        }
+        .upload-btn {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .upload-btn:hover {
+            background-color: #0056b3;
+        }
+        #file-input {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -16,7 +88,6 @@
         </div>
         <button class="upload-btn" onclick="document.getElementById('file-input').click()">Dodaj sliku</button>
         <input type="file" id="file-input" accept="image/*" onchange="handleFileUpload(event)">
-        <button id="admin-login" style="display: none;" onclick="loginAsAdmin()">Prijavi se kao administrator</button>
     </div>
 
     <script>
@@ -40,9 +111,7 @@
                     deleteBtn.textContent = 'Obriši';
                     deleteBtn.classList.add('delete-btn');
                     deleteBtn.addEventListener('click', function() {
-                        if(confirm("Da li ste sigurni da želite da obrišete ovu sliku?")) {
-                            gallery.removeChild(galleryItem);
-                        }
+                        gallery.removeChild(galleryItem);
                     });
                     galleryItem.appendChild(deleteBtn);
                     
@@ -52,24 +121,6 @@
                 reader.readAsDataURL(file);
             }
         }
-
-        // Funkcija za prijavu korisnika kao administratora
-        function loginAsAdmin() {
-            // Simulacija prijave korisnika kao administratora
-            const isAdmin = true; // Postaviti na true ako je korisnik administrator, inače na false
-
-            if (isAdmin) {
-                const deleteBtns = document.querySelectorAll('.delete-btn');
-                deleteBtns.forEach(btn => btn.style.display = 'inline-block');
-            } else {
-                alert('Nemate privilegije za brisanje slika!');
-            }
-        }
-
-        // Pozivamo funkciju za prijavu korisnika kao administratora ako je to potrebno
-        // Ova funkcija treba da bude pozvana na osnovu nekog događaja, poput klika na dugme za prijavu
-        // Na primer, ako imate sistem za autentifikaciju, ova funkcija bi trebalo da se pozove nakon uspešne prijave
-        loginAsAdmin();
     </script>
 </body>
 </html>
