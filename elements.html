@@ -61,7 +61,6 @@
         window.onload = function() {
             const images = localStorage.getItem('gallery_images');
             if (images) {
-                const imageGallery = document.getElementById('image-gallery');
                 const imageArray = JSON.parse(images);
                 imageArray.forEach(imageSrc => {
                     addImageToGallery(imageSrc);
