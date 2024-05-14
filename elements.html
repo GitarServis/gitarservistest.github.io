@@ -9,13 +9,13 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: url('pozadina.jpg') center/cover no-repeat; /* Postavljanje pozadinske slike */
+            background-color: #f0f0f0;
         }
         .container {
             max-width: 800px;
             margin: 20px auto;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* Providnost na belu pozadinu */
+            background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -33,10 +33,10 @@
             display: block;
             border-radius: 5px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out; /* Dodajemo animaciju prelaska preko slike */
+            transition: transform 0.3s ease-in-out;
         }
         .gallery img:hover {
-            transform: scale(1.1); /* Zumiranje slike kada se pređe mišem preko nje */
+            transform: scale(1.1);
         }
         .delete-btn {
             position: absolute;
@@ -49,9 +49,30 @@
             border-radius: 5px;
             cursor: pointer;
             transition: opacity 0.3s;
+            z-index: 1; /* Da bi bilo iznad slike */
+            display: none; /* Po defaultu sakriveno */
         }
-        .delete-btn:hover {
-            opacity: 0.7;
+        .gallery-item:hover .delete-btn {
+            display: block; /* Prikazuje se kada miš pređe preko slike */
+        }
+        .upload-btn {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .upload-btn:hover {
+            background-color: #0056b3;
+        }
+        #file-input {
+            display: none;
         }
     </style>
 </head>
@@ -78,38 +99,38 @@
                     const img = document.createElement('img');
                     img.src = reader.result;
 
+                    const galleryItem = document.createElement('div');
+                    galleryItem.classList.add('gallery-item');
+                    galleryItem.appendChild(img);
+
                     const deleteBtn = document.createElement('button');
                     deleteBtn.textContent = 'Obriši';
                     deleteBtn.classList.add('delete-btn');
                     deleteBtn.addEventListener('click', function() {
                         gallery.removeChild(galleryItem);
-                        // Uklonimo sliku i iz localStorage-a
-                        const images = JSON.parse(localStorage.getItem('gallery_images'));
-                        const imageIndex = images.indexOf(img.src);
-                        if (imageIndex !== -1) {
-                            images.splice(imageIndex, 1);
-                            localStorage.setItem('gallery_images', JSON.stringify(images));
-                        }
+                        // Ažuriranje lokalnog skladišta
+                        updateLocalStorage();
                     });
-
-                    const galleryItem = document.createElement('div');
-                    galleryItem.classList.add('gallery-item');
-                    galleryItem.appendChild(img);
                     galleryItem.appendChild(deleteBtn);
 
                     gallery.appendChild(galleryItem);
+                    // Ažuriranje lokalnog skladišta
+                    updateLocalStorage();
                 }
 
                 reader.readAsDataURL(file);
-
-                // Dodajemo slike u localStorage
-                const imageArray = Array.from(files).map(file => URL.createObjectURL(file));
-                const images = JSON.parse(localStorage.getItem('gallery_images')) || [];
-                localStorage.setItem('gallery_images', JSON.stringify([...images, ...imageArray]));
             }
         }
 
-        // Učitavanje slika iz localStorage-a prilikom učitavanja stranice
+        // Funkcija za ažuriranje lokalnog skladišta
+        function updateLocalStorage() {
+            const images = [];
+            const galleryItems = document.querySelectorAll('.gallery-item img');
+            galleryItems.forEach(item => images.push(item.src));
+            localStorage.setItem('gallery_images', JSON.stringify(images));
+        }
+
+        // Funkcija za učitavanje slika iz lokalnog skladišta prilikom učitavanja stranice
         window.onload = function() {
             const images = JSON.parse(localStorage.getItem('gallery_images')) || [];
             const gallery = document.getElementById('image-gallery');
@@ -117,23 +138,18 @@
                 const img = document.createElement('img');
                 img.src = imageSrc;
 
+                const galleryItem = document.createElement('div');
+                galleryItem.classList.add('gallery-item');
+                galleryItem.appendChild(img);
+
                 const deleteBtn = document.createElement('button');
                 deleteBtn.textContent = 'Obriši';
                 deleteBtn.classList.add('delete-btn');
                 deleteBtn.addEventListener('click', function() {
                     gallery.removeChild(galleryItem);
-                    // Uklonimo sliku i iz localStorage-a
-                    const images = JSON.parse(localStorage.getItem('gallery_images'));
-                    const imageIndex = images.indexOf(img.src);
-                    if (imageIndex !== -1) {
-                        images.splice(imageIndex, 1);
-                        localStorage.setItem('gallery_images', JSON.stringify(images));
-                    }
+                    // Ažuriranje lokalnog skladišta
+                    updateLocalStorage();
                 });
-
-                const galleryItem = document.createElement('div');
-                galleryItem.classList.add('gallery-item');
-                galleryItem.appendChild(img);
                 galleryItem.appendChild(deleteBtn);
 
                 gallery.appendChild(galleryItem);
