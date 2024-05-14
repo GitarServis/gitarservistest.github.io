@@ -9,13 +9,13 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background: url('pozadina.jpg') center/cover no-repeat; /* Postavljanje pozadinske slike */
         }
         .container {
             max-width: 800px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.8); /* Providnost na belu pozadinu */
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -26,6 +26,9 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             grid-gap: 20px;
+        }
+        .gallery-item {
+            position: relative;
         }
         .gallery img {
             width: 100%;
@@ -49,11 +52,12 @@
             border-radius: 5px;
             cursor: pointer;
             transition: opacity 0.3s;
-            z-index: 1; /* Da bi bilo iznad slike */
-            display: none; /* Po defaultu sakriveno */
         }
-        .gallery-item:hover .delete-btn {
-            display: block; /* Prikazuje se kada miš pređe preko slike */
+        .delete-btn:hover {
+            opacity: 100;
+        }
+        .delete-btn.hidden {
+            display: none;
         }
         .upload-btn {
             display: block;
@@ -108,13 +112,11 @@
                     deleteBtn.classList.add('delete-btn');
                     deleteBtn.addEventListener('click', function() {
                         gallery.removeChild(galleryItem);
-                        // Ažuriranje lokalnog skladišta
                         updateLocalStorage();
                     });
                     galleryItem.appendChild(deleteBtn);
 
                     gallery.appendChild(galleryItem);
-                    // Ažuriranje lokalnog skladišta
                     updateLocalStorage();
                 }
 
@@ -122,7 +124,6 @@
             }
         }
 
-        // Funkcija za ažuriranje lokalnog skladišta
         function updateLocalStorage() {
             const images = [];
             const galleryItems = document.querySelectorAll('.gallery-item img');
@@ -130,7 +131,6 @@
             localStorage.setItem('gallery_images', JSON.stringify(images));
         }
 
-        // Funkcija za učitavanje slika iz lokalnog skladišta prilikom učitavanja stranice
         window.onload = function() {
             const images = JSON.parse(localStorage.getItem('gallery_images')) || [];
             const gallery = document.getElementById('image-gallery');
@@ -144,17 +144,3 @@
 
                 const deleteBtn = document.createElement('button');
                 deleteBtn.textContent = 'Obriši';
-                deleteBtn.classList.add('delete-btn');
-                deleteBtn.addEventListener('click', function() {
-                    gallery.removeChild(galleryItem);
-                    // Ažuriranje lokalnog skladišta
-                    updateLocalStorage();
-                });
-                galleryItem.appendChild(deleteBtn);
-
-                gallery.appendChild(galleryItem);
-            });
-        };
-    </script>
-</body>
-</html>
