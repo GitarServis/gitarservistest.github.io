@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Gallery</title>
+    <title>Slike</title>
     <style>
-        /* Stilovi ostaju isti kao i pre */
+        /* CSS stilovi su isti kao u prethodnom primeru */
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>My Gallery</h1>
+        <h1>Galerija</h1>
         <div class="gallery" id="image-gallery">
             <!-- Galerija slika će biti dinamički generisana ovde -->
         </div>
@@ -19,78 +19,84 @@
     </div>
 
     <script>
-        function handleFileUpload(event) {
-            const gallery = document.getElementById('image-gallery');
-            const files = event.target.files;
+        // Funkcija za čuvanje slika u localStorage-u
+        function saveImageToStorage(imageSrc) {
+            let images = localStorage.getItem('gallery_images');
+            if (!images) {
+                images = [];
+            } else {
+                images = JSON.parse(images);
+            }
+            images.push(imageSrc);
+            localStorage.setItem('gallery_images', JSON.stringify(images));
+        }
 
+        // Funkcija za učitavanje slika iz localStorage-a
+        function loadImagesFromStorage() {
+            let images = localStorage.getItem('gallery_images');
+            if (images) {
+                images = JSON.parse(images);
+                images.forEach(imageSrc => addImageToGallery(imageSrc));
+            }
+        }
+
+        // Funkcija za dodavanje slike u galeriju
+        function addImageToGallery(imageSrc) {
+            const gallery = document.getElementById('image-gallery');
+
+            const img = document.createElement('img');
+            img.src = imageSrc;
+            
+            const galleryItem = document.createElement('div');
+            galleryItem.classList.add('gallery-item');
+            galleryItem.appendChild(img);
+            
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Obriši';
+            deleteBtn.classList.add('delete-btn');
+            deleteBtn.addEventListener('click', function() {
+                if(confirm("Da li ste sigurni da želite da obrišete ovu sliku?")) {
+                    gallery.removeChild(galleryItem);
+                    // Uklanjamo sliku iz localStorage-a
+                    removeImageFromStorage(imageSrc);
+                }
+            });
+            galleryItem.appendChild(deleteBtn);
+            
+            gallery.appendChild(galleryItem);
+        }
+
+        // Funkcija za uklanjanje slike iz localStorage-a
+        function removeImageFromStorage(imageSrc) {
+            let images = localStorage.getItem('gallery_images');
+            if (images) {
+                images = JSON.parse(images);
+                const index = images.indexOf(imageSrc);
+                if (index !== -1) {
+                    images.splice(index, 1);
+                    localStorage.setItem('gallery_images', JSON.stringify(images));
+                }
+            }
+        }
+
+        // Funkcija za obradu dodavanja nove slike
+        function handleFileUpload(event) {
+            const files = event.target.files;
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
                 const reader = new FileReader();
-
                 reader.onload = function() {
-                    const img = document.createElement('img');
-                    img.src = reader.result;
-
-                    const deleteBtn = document.createElement('button');
-                    deleteBtn.textContent = 'Obriši';
-                    deleteBtn.classList.add('delete-btn');
-                    deleteBtn.addEventListener('click', function() {
-                        gallery.removeChild(galleryItem);
-                        // Uklonimo sliku i iz localStorage-a
-                        const images = JSON.parse(localStorage.getItem('gallery_images'));
-                        const imageIndex = images.indexOf(img.src);
-                        if (imageIndex !== -1) {
-                            images.splice(imageIndex, 1);
-                            localStorage.setItem('gallery_images', JSON.stringify(images));
-                        }
-                    });
-
-                    const galleryItem = document.createElement('div');
-                    galleryItem.classList.add('gallery-item');
-                    galleryItem.appendChild(img);
-                    galleryItem.appendChild(deleteBtn);
-
-                    gallery.appendChild(galleryItem);
-                }
-
+                    const imageSrc = reader.result;
+                    addImageToGallery(imageSrc);
+                    saveImageToStorage(imageSrc);
+                };
                 reader.readAsDataURL(file);
-
-                // Dodajemo slike u localStorage
-                const imageArray = Array.from(files).map(file => URL.createObjectURL(file));
-                const images = JSON.parse(localStorage.getItem('gallery_images')) || [];
-                localStorage.setItem('gallery_images', JSON.stringify([...images, ...imageArray]));
             }
         }
 
         // Učitavanje slika iz localStorage-a prilikom učitavanja stranice
         window.onload = function() {
-            const images = JSON.parse(localStorage.getItem('gallery_images')) || [];
-            const gallery = document.getElementById('image-gallery');
-            images.forEach(imageSrc => {
-                const img = document.createElement('img');
-                img.src = imageSrc;
-
-                const deleteBtn = document.createElement('button');
-                deleteBtn.textContent = 'Obriši';
-                deleteBtn.classList.add('delete-btn');
-                deleteBtn.addEventListener('click', function() {
-                    gallery.removeChild(galleryItem);
-                    // Uklonimo sliku i iz localStorage-a
-                    const images = JSON.parse(localStorage.getItem('gallery_images'));
-                    const imageIndex = images.indexOf(img.src);
-                    if (imageIndex !== -1) {
-                        images.splice(imageIndex, 1);
-                        localStorage.setItem('gallery_images', JSON.stringify(images));
-                    }
-                });
-
-                const galleryItem = document.createElement('div');
-                galleryItem.classList.add('gallery-item');
-                galleryItem.appendChild(img);
-                galleryItem.appendChild(deleteBtn);
-
-                gallery.appendChild(galleryItem);
-            });
+            loadImagesFromStorage();
         };
     </script>
 </body>
