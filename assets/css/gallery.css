@@ -1,15 +1,3 @@
-body {
-  margin: 0;
-  padding: 0;
-  background-image: url('images/gitara-servis-kragujevac-popravka-ispodlogoa.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Postavljamo visinu tijela na visinu cijelog ekrana */
-}
 
 .gallery {
   display: grid;
