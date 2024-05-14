@@ -1,4 +1,3 @@
-
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -13,7 +12,7 @@
 }
 
 .image:hover {
-  transform: scale(1.4); /* Povećavamo sliku na 110% originalne veličine kad je miš iznad nje */
+  transform: scale(1.1); /* Povećavamo sliku na 110% originalne veličine kad je miš iznad nje */
 }
 
 img {
