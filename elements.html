@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Gallery</title>
     <style>
-        /* Stilovi su isti kao i pre */
+        /* CSS stilovi su isti kao i pre */
     </style>
 </head>
 <body>
@@ -30,16 +30,12 @@
                 reader.onload = function() {
                     const img = document.createElement('img');
                     img.src = reader.result;
-                    
-                    const galleryItem = document.createElement('div');
-                    galleryItem.classList.add('gallery-item');
-                    galleryItem.appendChild(img);
-                    
+
                     const deleteBtn = document.createElement('button');
                     deleteBtn.textContent = 'Obriši';
                     deleteBtn.classList.add('delete-btn');
                     deleteBtn.addEventListener('click', function() {
-                        gallery.removeChild(galleryItem);
+                        gallery.removeChild(img.parentNode);
                         // Uklonimo sliku i iz localStorage-a
                         const images = JSON.parse(localStorage.getItem('gallery_images'));
                         const imageIndex = images.indexOf(img.src);
@@ -48,8 +44,12 @@
                             localStorage.setItem('gallery_images', JSON.stringify(images));
                         }
                     });
+
+                    const galleryItem = document.createElement('div');
+                    galleryItem.classList.add('gallery-item');
+                    galleryItem.appendChild(img);
                     galleryItem.appendChild(deleteBtn);
-                    
+
                     gallery.appendChild(galleryItem);
                 }
 
@@ -70,15 +70,11 @@
                 const img = document.createElement('img');
                 img.src = imageSrc;
 
-                const galleryItem = document.createElement('div');
-                galleryItem.classList.add('gallery-item');
-                galleryItem.appendChild(img);
-
                 const deleteBtn = document.createElement('button');
                 deleteBtn.textContent = 'Obriši';
                 deleteBtn.classList.add('delete-btn');
                 deleteBtn.addEventListener('click', function() {
-                    gallery.removeChild(galleryItem);
+                    gallery.removeChild(img.parentNode);
                     // Uklonimo sliku i iz localStorage-a
                     const images = JSON.parse(localStorage.getItem('gallery_images'));
                     const imageIndex = images.indexOf(img.src);
@@ -87,6 +83,10 @@
                         localStorage.setItem('gallery_images', JSON.stringify(images));
                     }
                 });
+
+                const galleryItem = document.createElement('div');
+                galleryItem.classList.add('gallery-item');
+                galleryItem.appendChild(img);
                 galleryItem.appendChild(deleteBtn);
 
                 gallery.appendChild(galleryItem);
