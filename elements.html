@@ -1,160 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galerija</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: url('pozadina.jpg') center/cover no-repeat; /* Postavljanje pozadinske slike */
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* Providnost na belu pozadinu */
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            grid-gap: 20px;
-        }
-        .gallery-item {
-            position: relative;
-        }
-        .gallery img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out; /* Dodajemo animaciju prelaska preko slike */
-        }
-        .gallery img:hover {
-            transform: scale(1.5); /* Zumiranje slike kada se pređe mišem preko nje */
-            z-index: 5; /* Postavljanje većeg z-index-a za uvećanu sliku */
-        }
-        .delete-btn {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            padding: 5px 10px;
-            background-color: transparent;
-            color: transparent;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-        .delete-btn:hover {
-            opacity: 100;
-        }
-        .delete-btn.hidden {
-            display: none;
-        }
-        .upload-btn {
-            display: block;
-            width: 100%;
-            margin-top: 20px;
-            padding: 10px;
-            text-align: center;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .upload-btn:hover {
-            background-color: #0056b3;
-        }
-        #file-input {
-            display: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerija Slika</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Galerija</h1>
-        <div class="gallery" id="image-gallery">
-            <!-- Galerija slika će biti dinamički generisana ovde -->
-        </div>
-        <button class="upload-btn" onclick="document.getElementById('file-input').click()"></button>
-        <input type="file" id="file-input" accept="image/*" onchange="handleFileUpload(event)">
+  <div class="gallery">
+    <div class="image">
+      <img src="slika1.jpg" alt="Slika 1">
     </div>
-
-    <script>
-        function handleFileUpload(event) {
-            const gallery = document.getElementById('image-gallery');
-            const files = event.target.files;
-
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i];
-                const reader = new FileReader();
-
-                reader.onload = function() {
-                    const img = document.createElement('img');
-                    img.src = reader.result;
-
-                    const galleryItem = document.createElement('div');
-                    galleryItem.classList.add('gallery-item');
-                    galleryItem.appendChild(img);
-
-                    const deleteBtn = document.createElement('button');
-                    deleteBtn.textContent = '';
-                    deleteBtn.classList.add('delete-btn');
-                    deleteBtn.addEventListener('click', function() {
-                        gallery.removeChild(galleryItem);
-                        updateLocalStorage();
-                    });
-                    galleryItem.appendChild(deleteBtn);
-
-                    gallery.appendChild(galleryItem);
-                    updateLocalStorage();
-                }
-
-                reader.readAsDataURL(file);
-            }
-        }
-
-        function updateLocalStorage() {
-            const images = [];
-            const galleryItems = document.querySelectorAll('.gallery-item img');
-            galleryItems.forEach(item => images.push(item.src));
-            localStorage.setItem('gallery_images', JSON.stringify(images));
-        }
-
-        window.onload = function() {
-            const images = JSON.parse(localStorage.getItem('gallery_images')) || [];
-            const gallery = document.getElementById('image-gallery');
-            images.forEach(imageSrc => {
-                const img = document.createElement('img');
-                img.src = imageSrc;
-
-                const galleryItem = document.createElement('div');
-                galleryItem.classList.add('gallery-item');
-                galleryItem.appendChild(img);
-
-                const deleteBtn = document.createElement('button');
-                deleteBtn.textContent = '';
-                deleteBtn.classList.add('delete-btn');
-                deleteBtn.addEventListener('click', function() {
-                    gallery.removeChild(galleryItem);
-                    updateLocalStorage();
-                });
-                galleryItem.appendChild(deleteBtn);
-
-                gallery.appendChild(galleryItem);
-            });
-        };
-    </script>
+    <div class="image">
+      <img src="slika2.jpg" alt="Slika 2">
+    </div>
+    <div class="image">
+      <img src="slika3.jpg" alt="Slika 3">
+    </div>
+    <!-- Dodajte više slika prema potrebi -->
+  </div>
 </body>
 </html>
