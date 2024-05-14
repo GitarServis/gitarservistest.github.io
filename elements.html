@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Gallery</title>
     <style>
-        /* CSS stilovi su isti kao i pre */
+        /* Stilovi ostaju isti kao i pre */
     </style>
 </head>
 <body>
@@ -35,7 +35,7 @@
                     deleteBtn.textContent = 'Obriši';
                     deleteBtn.classList.add('delete-btn');
                     deleteBtn.addEventListener('click', function() {
-                        gallery.removeChild(img.parentNode);
+                        gallery.removeChild(galleryItem);
                         // Uklonimo sliku i iz localStorage-a
                         const images = JSON.parse(localStorage.getItem('gallery_images'));
                         const imageIndex = images.indexOf(img.src);
@@ -74,7 +74,7 @@
                 deleteBtn.textContent = 'Obriši';
                 deleteBtn.classList.add('delete-btn');
                 deleteBtn.addEventListener('click', function() {
-                    gallery.removeChild(img.parentNode);
+                    gallery.removeChild(galleryItem);
                     // Uklonimo sliku i iz localStorage-a
                     const images = JSON.parse(localStorage.getItem('gallery_images'));
                     const imageIndex = images.indexOf(img.src);
