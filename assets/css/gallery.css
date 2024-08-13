@@ -9,12 +9,12 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #181818;
+  background-color: #f4f4f4;
   color: #333;
-  background-image: url('images/gitara.jpg'); /* Putanja do tvoje pozadinske slike */
-  background-size: cover; /* Slika pokriva celu pozadinu */
-  background-repeat: no-repeat; /* Sprečava ponavljanje slike */
-  background-position: center; /* Pozicionira sliku na sredinu */
+  background-image: url('images/background.jpg'); /* Putanja do tvoje pozadinske slike */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .gallery {
@@ -26,16 +26,17 @@ body {
 }
 
 .gallery img {
-  width: 300px;
-  height: 225px;
+  width: 200px;
+  height: 150px;
   object-fit: cover;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .gallery img:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 /* Stil za povećanu sliku */
@@ -43,16 +44,16 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 60vw; /* 60% širine prozora */
-  height: 80vh; /* 80% visine prozora */
-  transform: translate(-50%, -50%); /* Centriraj sliku */
-  z-index: 1000; /* Povećaj z-index da slika bude iznad ostalih elemenata */
+  width: 80vw;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 /* Stilovi za strelice */
 .arrow {
-  position: fixed;
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
   font-size: 48px;
@@ -60,25 +61,19 @@ body {
   z-index: 1001;
   cursor: pointer;
   user-select: none;
+  display: none; /* Strelice su sakrivene dok slika nije povećana */
 }
 
 .arrow.left {
-  left: 20px;
+  left: -60px; /* Postavljamo ih malo van slike da budu vidljive */
 }
 
 .arrow.right {
-  right: 20px;
+  right: -60px; /* Postavljamo ih malo van slike da budu vidljive */
 }
 
-/* Novi kod za header */
-
-.page-header {
-  text-align: center;
-  margin: 30px 0;
+/* Strelice će biti vidljive kada je slika povećana */
+.gallery img.enlarged ~ .arrow {
+  display: block;
 }
 
-.page-title {
-  font-size: 32px; /* Promeni veličinu fonta po potrebi */
-  font-family: Arial, sans-serif; /* Možeš promeniti font prema želji */
-  color: #D0D0D0; /* Boja teksta */
-}
