@@ -9,9 +9,9 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #f4f4f4; /* Ovo je neutralna pozadinska boja */
   color: #333;
-  background-image: url('images/background.jpg'); /* Putanja do tvoje pozadinske slike */
+  background-image: url('images/background.jpg'); /* Ako želiš pozadinsku sliku */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -65,15 +65,26 @@ body {
 }
 
 .arrow.left {
-  left: -60px; /* Postavljamo ih malo van slike da budu vidljive */
+  left: 10px;
 }
 
 .arrow.right {
-  right: -60px; /* Postavljamo ih malo van slike da budu vidljive */
+  right: 10px;
 }
 
-/* Strelice će biti vidljive kada je slika povećana */
-.gallery img.enlarged ~ .arrow {
-  display: block;
+.gallery img.enlarged + .arrow {
+  display: block; /* Strelice će biti vidljive kada je slika povećana */
+}
+
+/* Stilizacija za naslov stranice */
+.page-header {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.page-title {
+  font-size: 24px;
+  font-family: Arial, sans-serif;
+  color: #333;
 }
 
