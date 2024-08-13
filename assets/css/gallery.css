@@ -11,9 +11,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   color: #333;
-  background-image: <img src="images
-/gitara.jpg
-" alt="gitara"> /* Putanja do tvoje pozadinske slike */
+  background-image: url('images/gitara.jpg'); /* Putanja do tvoje pozadinske slike */
   background-size: cover; /* Slika pokriva celu pozadinu */
   background-repeat: no-repeat; /* Sprečava ponavljanje slike */
   background-position: center; /* Pozicionira sliku na sredinu */
