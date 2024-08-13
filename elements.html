@@ -654,20 +654,6 @@
         <!-- Dodajte više slika prema potrebi -->
   </div>
 <script>
-  document.querySelectorAll('.gallery img').forEach(img => {
-    img.addEventListener('click', () => {
-      if (img.classList.contains('enlarged')) {
-        img.classList.remove('enlarged');
-      } else {
-        document.querySelectorAll('.gallery img.enlarged').forEach(enlargedImg => {
-          enlargedImg.classList.remove('enlarged');
-        });
-        img.classList.add('enlarged');
-      }
-    });
-  });
-</script>
-<script>
   const images = document.querySelectorAll('.gallery img');
   let currentIndex = -1;
 
@@ -696,13 +682,25 @@
   }
 
   function showArrows() {
-    document.querySelector('.arrow.left').style.display = 'block';
-    document.querySelector('.arrow.right').style.display = 'block';
+    const leftArrow = document.createElement('div');
+    const rightArrow = document.createElement('div');
+
+    leftArrow.innerHTML = '&#10094;';
+    rightArrow.innerHTML = '&#10095;';
+
+    leftArrow.classList.add('arrow', 'left');
+    rightArrow.classList.add('arrow', 'right');
+
+    images[currentIndex].parentElement.appendChild(leftArrow);
+    images[currentIndex].parentElement.appendChild(rightArrow);
+
+    leftArrow.addEventListener('click', showPreviousImage);
+    rightArrow.addEventListener('click', showNextImage);
   }
 
   function hideArrows() {
-    document.querySelector('.arrow.left').style.display = 'none';
-    document.querySelector('.arrow.right').style.display = 'none';
+    const arrows = document.querySelectorAll('.arrow');
+    arrows.forEach(arrow => arrow.remove());
   }
 
   function showNextImage() {
@@ -717,13 +715,12 @@
     }
   }
 
-  document.querySelector('.arrow.right').addEventListener('click', showNextImage);
-  document.querySelector('.arrow.left').addEventListener('click', showPreviousImage);
-
   // Zatvaranje slike klikom bilo gde izvan nje
   window.addEventListener('click', (e) => {
     if (e.target.classList.contains('enlarged')) return;
     closeImage();
   });
+</script>
+
 </body>
 </html>
