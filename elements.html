@@ -650,5 +650,20 @@
 <img src="images/galerija/Slika - 635.jpg" alt="Slika 635">
         <!-- Dodajte više slika prema potrebi -->
   </div>
+<script>
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+      if (img.classList.contains('enlarged')) {
+        img.classList.remove('enlarged');
+      } else {
+        document.querySelectorAll('.gallery img.enlarged').forEach(enlargedImg => {
+          enlargedImg.classList.remove('enlarged');
+        });
+        img.classList.add('enlarged');
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
