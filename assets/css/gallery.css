@@ -50,6 +50,18 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
+/* Stilovi za strelice */
+.arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 48px;
+  color: white;
+  z-index: 1001;
+  cursor: pointer;
+  user-select: none;
+}
+
 /* Novi kod za header */
 
 .page-header {
