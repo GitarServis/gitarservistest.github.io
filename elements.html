@@ -664,6 +664,63 @@
     });
   });
 </script>
+<script>
+  const images = document.querySelectorAll('.gallery img');
+  let currentIndex = -1;
 
+  images.forEach((img, index) => {
+    img.addEventListener('click', () => {
+      if (img.classList.contains('enlarged')) {
+        closeImage();
+      } else {
+        openImage(index);
+      }
+    });
+  });
+
+  function openImage(index) {
+    closeImage(); // Zatvori sve prethodne slike
+    currentIndex = index;
+    images[currentIndex].classList.add('enlarged');
+    showArrows();
+  }
+
+  function closeImage() {
+    images.forEach(img => {
+      img.classList.remove('enlarged');
+    });
+    hideArrows();
+  }
+
+  function showArrows() {
+    document.querySelector('.arrow.left').style.display = 'block';
+    document.querySelector('.arrow.right').style.display = 'block';
+  }
+
+  function hideArrows() {
+    document.querySelector('.arrow.left').style.display = 'none';
+    document.querySelector('.arrow.right').style.display = 'none';
+  }
+
+  function showNextImage() {
+    if (currentIndex < images.length - 1) {
+      openImage(currentIndex + 1);
+    }
+  }
+
+  function showPreviousImage() {
+    if (currentIndex > 0) {
+      openImage(currentIndex - 1);
+    }
+  }
+
+  document.querySelector('.arrow.right').addEventListener('click', showNextImage);
+  document.querySelector('.arrow.left').addEventListener('click', showPreviousImage);
+
+  // Zatvaranje slike klikom bilo gde izvan nje
+  window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('enlarged')) return;
+    closeImage();
+  });
 </body>
 </html>
