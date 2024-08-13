@@ -44,7 +44,7 @@ body {
   top: 50%;
   left: 50%;
   width: 60vw; /* 60% širine prozora */
-  height: auto; /* Zadrži proporcije slike */
+  height: 10vw; /* Zadrži proporcije slike */
   transform: translate(-50%, -50%); /* Centriraj sliku */
   z-index: 1000; /* Povećaj z-index da slika bude iznad ostalih elemenata */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
