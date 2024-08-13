@@ -43,7 +43,7 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 80vw; /* 80% širine prozora */
+  width: 60vw; /* 60% širine prozora */
   height: auto; /* Zadrži proporcije slike */
   transform: translate(-50%, -50%); /* Centriraj sliku */
   z-index: 1000; /* Povećaj z-index da slika bude iznad ostalih elemenata */
