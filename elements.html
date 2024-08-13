@@ -4,15 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Galerija Slika</title>
-  <link rel="stylesheet" href="assets/css/gallery.css"> <!-- Novi CSS za galeriju -->
+  <link rel="stylesheet" href="assets/css/gallery.css">
 </head>
 <body>
- <!-- Strelice za navigaciju kroz slike -->
-  <div class="arrow left">&#10094;</div> <!-- Strelica levo -->
-  <div class="arrow right">&#10095;</div> <!-- Strelica desno -->
-  <header class="page-header">
-    <h1 class="page-title">GALERIJA</h1>
-  </header>
+  <div class="page-header">
+    <h1 class="page-title">Galerija Slika</h1>
+  </div>
+
 
   <div class="gallery">
    
@@ -653,74 +651,81 @@
 <img src="images/galerija/Slika - 635.jpg" alt="Slika 635">
         <!-- Dodajte više slika prema potrebi -->
   </div>
-<script>
-  const images = document.querySelectorAll('.gallery img');
-  let currentIndex = -1;
+ <script>
+    const images = document.querySelectorAll('.gallery img');
+    let currentIndex = -1;
 
-  images.forEach((img, index) => {
-    img.addEventListener('click', () => {
-      if (img.classList.contains('enlarged')) {
-        closeImage();
-      } else {
-        openImage(index);
+    images.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        if (img.classList.contains('enlarged')) {
+          closeImage();
+        } else {
+          openImage(index);
+        }
+      });
+    });
+
+    function openImage(index) {
+      closeImage(); // Zatvori sve prethodne slike
+      currentIndex = index;
+      const currentImage = images[currentIndex];
+      currentImage.classList.add('enlarged');
+
+      // Dodavanje strelica ako ne postoje
+      if (!document.querySelector('.arrow.left')) {
+        const leftArrow = document.createElement('div');
+        leftArrow.innerHTML = '&#10094;';
+        leftArrow.classList.add('arrow', 'left');
+        document.body.appendChild(leftArrow);
+
+        const rightArrow = document.createElement('div');
+        rightArrow.innerHTML = '&#10095;';
+        rightArrow.classList.add('arrow', 'right');
+        document.body.appendChild(rightArrow);
+
+        leftArrow.addEventListener('click', showPreviousImage);
+        rightArrow.addEventListener('click', showNextImage);
       }
-    });
-  });
 
-  function openImage(index) {
-    closeImage(); // Zatvori sve prethodne slike
-    currentIndex = index;
-    images[currentIndex].classList.add('enlarged');
-    showArrows();
-  }
-
-  function closeImage() {
-    images.forEach(img => {
-      img.classList.remove('enlarged');
-    });
-    hideArrows();
-  }
-
-  function showArrows() {
-    const leftArrow = document.createElement('div');
-    const rightArrow = document.createElement('div');
-
-    leftArrow.innerHTML = '&#10094;';
-    rightArrow.innerHTML = '&#10095;';
-
-    leftArrow.classList.add('arrow', 'left');
-    rightArrow.classList.add('arrow', 'right');
-
-    images[currentIndex].parentElement.appendChild(leftArrow);
-    images[currentIndex].parentElement.appendChild(rightArrow);
-
-    leftArrow.addEventListener('click', showPreviousImage);
-    rightArrow.addEventListener('click', showNextImage);
-  }
-
-  function hideArrows() {
-    const arrows = document.querySelectorAll('.arrow');
-    arrows.forEach(arrow => arrow.remove());
-  }
-
-  function showNextImage() {
-    if (currentIndex < images.length - 1) {
-      openImage(currentIndex + 1);
+      showArrows();
     }
-  }
 
-  function showPreviousImage() {
-    if (currentIndex > 0) {
-      openImage(currentIndex - 1);
+    function closeImage() {
+      images.forEach(img => {
+        img.classList.remove('enlarged');
+      });
+      hideArrows();
     }
-  }
 
-  // Zatvaranje slike klikom bilo gde izvan nje
-  window.addEventListener('click', (e) => {
-    if (e.target.classList.contains('enlarged')) return;
-    closeImage();
-  });
-</script>
+    function showArrows() {
+      document.querySelector('.arrow.left').style.display = 'block';
+      document.querySelector('.arrow.right').style.display = 'block';
+    }
 
+    function hideArrows() {
+      document.querySelector('.arrow.left').style.display = 'none';
+      document.querySelector('.arrow.right').style.display = 'none';
+    }
+
+    function showNextImage() {
+      if (currentIndex < images.length - 1) {
+        openImage(currentIndex + 1);
+      }
+    }
+
+    function showPreviousImage() {
+      if (currentIndex > 0) {
+        openImage(currentIndex - 1);
+      }
+    }
+
+    // Zatvaranje slike klikom bilo gde izvan nje
+    window.addEventListener('click', (e) => {
+      if (e.target.classList.contains('enlarged')) return;
+      closeImage();
+    });
+  </script>
+</body>
+</html>
 </body>
 </html>
