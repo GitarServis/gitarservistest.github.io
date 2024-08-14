@@ -667,6 +667,7 @@
   });
 
   function openImage(index) {
+    console.log('Opening image at index:', index); // Dodato za debagovanje
     closeImage(); // Zatvori sve prethodne slike
     currentIndex = index;
     const currentImage = images[currentIndex];
@@ -692,6 +693,7 @@
   }
 
   function closeImage() {
+    console.log('Closing image'); // Dodato za debagovanje
     images.forEach(img => {
       img.classList.remove('enlarged');
     });
@@ -726,6 +728,7 @@
     closeImage();
   });
 </script>
+
 </body>
 </html>
 
