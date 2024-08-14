@@ -53,14 +53,15 @@ body {
 
 /* Stilovi za strelice */
 .arrow {
-  position: absolute;
+  position: fixed;
   top: 50%;
-  transform: translateY(-50%);
   font-size: 48px;
   color: white;
-  z-index: 1001;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
   cursor: pointer;
   user-select: none;
+  z-index: 1001;
   display: none; /* Strelice su sakrivene dok slika nije povećana */
 }
 
@@ -72,8 +73,9 @@ body {
   right: 10px;
 }
 
-.gallery img.enlarged + .arrow {
-  display: block; /* Strelice će biti vidljive kada je slika povećana */
+/* Prikaz strelica kada je slika povećana */
+.gallery img.enlarged ~ .arrow {
+  display: block;
 }
 
 /* Stilizacija za naslov stranice */
