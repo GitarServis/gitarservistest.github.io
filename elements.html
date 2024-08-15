@@ -727,6 +727,21 @@
       closeImage();
     });
   </script>
+<script>
+  // Selektuj sve thumbnail slike
+  const thumbnails = document.querySelectorAll('.gallery img');
+
+  // Dodaj event listener za svaku sliku
+  thumbnails.forEach(img => {
+    img.addEventListener('click', () => {
+      // Uzmi vrednost iz data-full atributa (putanja do originalne slike)
+      const fullSrc = img.getAttribute('data-full');
+
+      // Otvori originalnu sliku u novom tabu/prozoru
+      window.open(fullSrc, '_blank');
+    });
+  });
+</script>
 </body>
 </html>
 
