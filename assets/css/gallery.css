@@ -78,6 +78,28 @@ body {
   color: #bbb;
 }
 
+/* Stilovi za strelice */
+.arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 48px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 1001;
+  display: block;
+}
+
+.arrow.left {
+  left: 20px;
+}
+
+.arrow.right {
+  right: 20px;
+}
+
 /* Stilizacija za naslov stranice */
 .page-header {
   text-align: center;
