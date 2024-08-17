@@ -1283,127 +1283,35 @@
         <!-- Dodajte više slika prema potrebi -->
   </div>
  <script>
-    // Selektovanje svih slika
-    const images = document.querySelectorAll('.gallery img');
-    let currentIndex = -1;
+    // Selektuj sve thumbnail slike
+    const thumbnails = document.querySelectorAll('.gallery img');
 
-    images.forEach((img, index) => {
-      img.addEventListener('click', () => {
-        if (img.classList.contains('enlarged')) {
-          closeImage();
-        } else {
-          openImage(index);
-        }
+    thumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener('click', () => {
+        const fullSrc = thumbnail.getAttribute('data-full');
+        const fullscreenDiv = document.createElement('div');
+        fullscreenDiv.classList.add('fullscreen-image');
+
+        const fullImage = document.createElement('img');
+        fullImage.src = fullSrc;
+
+        fullscreenDiv.appendChild(fullImage);
+        document.body.appendChild(fullscreenDiv);
+
+        // Klik na sliku zatvara fullscreen prikaz
+        fullImage.addEventListener('click', () => {
+          document.body.removeChild(fullscreenDiv);
+        });
+
+        // Klik na pozadinu zatvara fullscreen prikaz
+        fullscreenDiv.addEventListener('click', (e) => {
+          if (e.target !== fullImage) {
+            document.body.removeChild(fullscreenDiv);
+          }
+        });
       });
-    });
-
-    function openImage(index) {
-      console.log('Opening image at index:', index); // Dodato za debagovanje
-      closeImage(); // Zatvori sve prethodne slike
-      currentIndex = index;
-      const currentImage = images[currentIndex];
-      currentImage.classList.add('enlarged');
-
-      // Dodavanje strelica ako ne postoje
-      if (!document.querySelector('.arrow.left')) {
-        const leftArrow = document.createElement('div');
-        leftArrow.innerHTML = '&#10094;';
-        leftArrow.classList.add('arrow', 'left');
-        document.body.appendChild(leftArrow);
-
-        const rightArrow = document.createElement('div');
-        rightArrow.innerHTML = '&#10095;';
-        rightArrow.classList.add('arrow', 'right');
-        document.body.appendChild(rightArrow);
-
-        leftArrow.addEventListener('click', showPreviousImage);
-        rightArrow.addEventListener('click', showNextImage);
-      }
-
-      showArrows();
-    }
-
-    function closeImage() {
-      console.log('Closing image'); // Dodato za debagovanje
-      images.forEach(img => {
-        img.classList.remove('enlarged');
-      });
-      hideArrows();
-    }
-
-    function showArrows() {
-      document.querySelector('.arrow.left').style.display = 'block';
-      document.querySelector('.arrow.right').style.display = 'block';
-    }
-
-    function hideArrows() {
-      document.querySelector('.arrow.left').style.display = 'none';
-      document.querySelector('.arrow.right').style.display = 'none';
-    }
-
-    function showNextImage() {
-      if (currentIndex < images.length - 1) {
-        openImage(currentIndex + 1);
-      }
-    }
-
-    function showPreviousImage() {
-      if (currentIndex > 0) {
-        openImage(currentIndex - 1);
-      }
-    }
-
-    // Zatvaranje slike klikom bilo gde izvan nje
-    window.addEventListener('click', (e) => {
-      if (e.target.classList.contains('enlarged')) return;
-      closeImage();
     });
   </script>
-<script>
-  // Selektuj sve thumbnail slike
-  const thumbnails = document.querySelectorAll('.gallery img');
-
-  // Dodaj event listener za svaku sliku
-  thumbnails.forEach(img => {
-    img.addEventListener('click', () => {
-      // Uzmi vrednost iz data-full atributa (putanja do originalne slike)
-      const fullSrc = img.getAttribute('data-full');
-
-      // Otvori originalnu sliku u novom tabu/prozoru
-      window.open(fullSrc, '_blank');
-    });
-  });
-</script>
-<!-- Modal za prikaz velike slike -->
-const thumbnails = document.querySelectorAll('.gallery img');
-
-  thumbnails.forEach(thumbnail => {
-    thumbnail.addEventListener('click', () => {
-      const fullSrc = thumbnail.getAttribute('data-full');
-      const fullscreenDiv = document.createElement('div');
-      fullscreenDiv.classList.add('fullscreen-image');
-
-      const fullImage = document.createElement('img');
-      fullImage.src = fullSrc;
-
-      fullscreenDiv.appendChild(fullImage);
-      document.body.appendChild(fullscreenDiv);
-
-      // Klik na sliku zatvara fullscreen prikaz
-      fullImage.addEventListener('click', () => {
-        document.body.removeChild(fullscreenDiv);
-      });
-
-      // Klik na pozadinu zatvara fullscreen prikaz
-      fullscreenDiv.addEventListener('click', (e) => {
-        if (e.target !== fullImage) {
-          document.body.removeChild(fullscreenDiv);
-        }
-      });
-    });
-  });
-</script>
 
 </body>
 </html>
-
