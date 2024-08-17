@@ -40,16 +40,26 @@ body {
 }
 
 /* Stil za povećanu sliku */
-.gallery img.enlarged {
+.fullscreen-image {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 80vw;
-  height: auto;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 80%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 1000;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
+
+.fullscreen-image img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  cursor: pointer;
+}
+
 
 /* Stilovi za strelice */
 .arrow {
