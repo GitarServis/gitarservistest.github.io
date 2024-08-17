@@ -57,6 +57,7 @@ body {
   max-width: 90%;
   max-height: 90%;
   object-fit: contain;
+  cursor: pointer;
 }
 
 /* Stil za zatvori dugme */
@@ -87,5 +88,6 @@ body {
   font-size: 32px;
   color: #BABABA;
 }
+
 
 
