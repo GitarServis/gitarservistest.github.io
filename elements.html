@@ -1285,6 +1285,7 @@
   <script>
     const thumbnails = document.querySelectorAll('.gallery img');
     let currentIndex = -1;
+    let fullscreenDiv = null;
 
     thumbnails.forEach((thumbnail, index) => {
       thumbnail.addEventListener('click', () => {
@@ -1295,7 +1296,7 @@
     function openImage(index) {
       currentIndex = index;
       const fullSrc = thumbnails[currentIndex].getAttribute('data-full');
-      const fullscreenDiv = document.createElement('div');
+      fullscreenDiv = document.createElement('div');
       fullscreenDiv.classList.add('fullscreen-image');
 
       const fullImage = document.createElement('img');
@@ -1322,30 +1323,32 @@
       fullscreenDiv.appendChild(rightArrow);
       document.body.appendChild(fullscreenDiv);
 
+      // Osiguraj da svi klik događaji zatvaraju sliku
       fullImage.addEventListener('click', closeImage);
-
       fullscreenDiv.addEventListener('click', (e) => {
-        if (e.target !== fullImage && e.target !== leftArrow && e.target !== rightArrow && e.target !== closeButton) {
+        if (e.target === fullscreenDiv) {
           closeImage();
         }
       });
     }
 
     function closeImage() {
-      const fullscreenDiv = document.querySelector('.fullscreen-image');
       if (fullscreenDiv) {
         document.body.removeChild(fullscreenDiv);
+        fullscreenDiv = null;
       }
     }
 
     function showNextImage() {
       if (currentIndex < thumbnails.length - 1) {
+        closeImage(); // Zatvori trenutnu sliku pre otvaranja sledeće
         openImage(currentIndex + 1);
       }
     }
 
     function showPreviousImage() {
       if (currentIndex > 0) {
+        closeImage(); // Zatvori trenutnu sliku pre otvaranja prethodne
         openImage(currentIndex - 1);
       }
     }
