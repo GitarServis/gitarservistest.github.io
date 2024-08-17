@@ -9,9 +9,9 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #373737; /* Ovo je neutralna pozadinska boja */
+  background-color: #373737;
   color: #333;
-  background-image: url('images/background.jpg'); /* Ako želiš pozadinsku sliku */
+  background-image: url('images/background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -57,35 +57,24 @@ body {
   max-width: 90%;
   max-height: 90%;
   object-fit: contain;
-  cursor: pointer;
 }
 
-
-/* Stilovi za strelice */
-.arrow {
-  position: fixed;
-  top: 50%;
-  font-size: 48px;
+/* Stil za zatvori dugme */
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 30px;
   color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px;
+  font-size: 40px;
+  font-weight: bold;
+  background: none;
+  border: none;
   cursor: pointer;
-  user-select: none;
   z-index: 1001;
-  display: none; /* Strelice su sakrivene dok slika nije povećana */
 }
 
-.arrow.left {
-  left: 10px;
-}
-
-.arrow.right {
-  right: 10px;
-}
-
-/* Prikaz strelica kada je slika povećana */
-.gallery img.enlarged ~ .arrow {
-  display: block;
+.close-button:hover {
+  color: #bbb;
 }
 
 /* Stilizacija za naslov stranice */
@@ -96,44 +85,7 @@ body {
 
 .page-title {
   font-size: 32px;
-  font-family: Arial, sans-serif;
   color: #BABABA;
 }
-/* Stil za modalni prozor */
-.modal {
-  display: none; /* Sakrij modalni prozor po defaultu */
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.8); /* Poluprovidna crna pozadina */
-}
 
-/* Stil za sadržaj modalnog prozora */
-.modal-content {
-  margin: auto;
-  display: block;
-  max-width: 80%;
-  max-height: 80%;
-}
-
-/* Stil za zatvori dugme */
-.close {
-  position: absolute;
-  top: 10px;
-  right: 25px;
-  color: #f1f1f1;
-  font-size: 35px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #bbb;
-  text-decoration: none;
-  cursor: pointer;
-}
 
