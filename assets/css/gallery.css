@@ -102,7 +102,7 @@ body {
 
 /* Stilizacija za header */
 .page-header {
-  max-width: calc(1040px); /* Postavi širinu da odgovara prvom redu od 5 thumbnail slika, uključujući razmake između slika */
+  max-width: calc(1460px); /* Postavi širinu da odgovara prvom redu od 5 thumbnail slika, uključujući razmake između slika */
   background-color: #121212; /* Pozadinska boja hedera */
   padding: 20px;
   text-align: center;
