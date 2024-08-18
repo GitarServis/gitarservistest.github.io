@@ -110,35 +110,27 @@ body {
   font-size: 32px;
   color: #BABABA;
 }
+/* Stilizacija za header */
 .page-header {
-  text-align: center;
-  margin: 40px 0;
+  background-color: #444; /* Pozadinska boja hedera */
   padding: 20px;
-  background-color: #2c3e50;
-  color: #ecf0f1;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 
 .page-title {
-  font-size: 32px;
-  font-family: Arial, sans-serif;
-  color: #ecf0f1;
+  color: #fff; /* Boja teksta "Galerija Slika" */
+  margin-bottom: 10px;
 }
 
 .header-info h2 {
-  font-size: 24px;
-  margin: 10px 0 5px 0;
-  color: #e74c3c;
-  font-weight: bold;
+  color: #ffcc00; /* Boja teksta "Gitar Servis" */
+  margin: 5px 0;
 }
 
 .header-info p {
-  margin: 5px 0;
-  color: #bdc3c7;
-  font-size: 18px;
+  color: #ffffff; /* Boja teksta u paragrafima */
+  margin: 2px 0;
 }
-
 
 
 
