@@ -102,10 +102,12 @@ body {
 
 /* Stilizacija za naslov stranice */
 .page-header {
+  display: inline-block;
+  background-color: #121212; /* Pozadinska boja hedera */
+  padding: 20px;
   text-align: center;
-  margin: 40px 0;
+  margin: 0 auto; /* Centriranje hedera */
 }
-
 .page-title {
   font-size: 32px;
   color: #BABABA;
