@@ -172,6 +172,14 @@ body {
   font-size: 14px;
 }
 
+.footer-social a {
+  color: #ffffff; /* Boja linkova */
+  margin-bottom: 5px;
+  text-decoration: none;
+}
 
+.footer-social a:hover {
+  text-decoration: underline;
+  color: #0165E1; /* Promena boje prilikom prelaska mišem */
 
 
