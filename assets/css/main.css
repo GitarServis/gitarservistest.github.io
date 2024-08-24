@@ -3382,7 +3382,7 @@ input, select, textarea {
 		left: 0;
 		line-height: 3.5em;
 		position: fixed;
-		top: 0;
+		top: 2.3em;
 		width: 100%;
 		z-index: 100;
 	}
