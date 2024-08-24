@@ -6,9 +6,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-header h1 {
-    padding-top: 20px; /* Dodavanje 20px prostora iznad teksta unutar elementa */
-}
 
 body {
   font-family: Arial, sans-serif;
