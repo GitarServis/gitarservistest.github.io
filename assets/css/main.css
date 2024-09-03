@@ -4074,3 +4074,35 @@ input, select, textarea {
   text-decoration: underline;
   color: #17A9FD; /* Promena boje prilikom prelaska mišem */
 }
+.site-footer {
+    padding: 20px;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around; /* Raspoređuje elemente horizontalno sa razmakom između njih */
+    flex-wrap: wrap; /* Omogućava prelazak elemenata u sledeći red na manjim ekranima */
+    max-width: 1200px; /* Maksimalna širina footera */
+    margin: 0 auto; /* Centriranje footera */
+}
+
+.footer-info, .footer-hours, .footer-social {
+    flex: 1; /* Svaka sekcija zauzima isti prostor */
+    margin: 10px; /* Razmak između sekcija */
+    min-width: 250px; /* Minimalna širina da bi se lepo prikazalo na manjim ekranima */
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px;
+    background-color: #e0e0e0;
+    margin-top: 20px;
+}
+
+.footer-social a {
+    display: block; /* Linkovi u footer-social divu se prikazuju kao blokovi */
+    margin-bottom: 5px;
+}
+
