@@ -2194,10 +2194,7 @@ input, select, textarea {
 			width: 75%;
 		}
 
-	footer.major {
-		margin: 4em 0 0 0;
-	}
-
+	
 /* Form */
 
 	form {
@@ -3676,12 +3673,6 @@ input, select, textarea {
 						margin: 0;
 					}
 
-		/* Footer */
-
-			#footer {
-				padding: 4.5em 0;
-			}
-
 	}
 
 /* Small */
@@ -3979,14 +3970,7 @@ input, select, textarea {
 				transform: translateX(0);
 			}
 
-		/* Footer */
-
-			#footer {
-				padding: 3.25em 1.5em;
-			}
-
-	}
-
+			
 /* XSmall */
 
 	@media screen and (max-width: 480px) {
