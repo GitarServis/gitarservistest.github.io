@@ -4018,9 +4018,9 @@ input, select, textarea {
 
 		/* Stilizacija za footer */
 .site-footer {
-  background-color: #121212;
+  padding: 20px;
+  background-color: #121212; /* Ova boja će se primenjivati na svim uređajima */
   color: #ffffff;
-  padding: 20px 0;
   text-align: center;
 }
 
@@ -4028,14 +4028,14 @@ input, select, textarea {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  justify-content: space-between; /* Ostavlja prostor između sekcija */
+  flex-wrap: wrap; /* Omogućava prelazak u novi red na manjim ekranima */
 }
 
 .footer-info, .footer-hours, .footer-social {
   flex: 1;
   min-width: 250px;
-  margin-bottom: 20px;
+  margin: 10px;
 }
 
 .footer-info h3, .footer-hours h4, .footer-social h4 {
@@ -4051,6 +4051,7 @@ input, select, textarea {
 
 .footer-social a:hover {
   text-decoration: underline;
+  color: #17A9FD; /* Promena boje prilikom prelaska mišem */
 }
 
 .footer-bottom {
@@ -4064,45 +4065,11 @@ input, select, textarea {
   font-size: 14px;
 }
 
+/* Prikazivanje linkova kao blok elemenata */
 .footer-social a {
-  color: #ffffff; /* Boja linkova */
+  display: block;
+  color: #ffffff;
   margin-bottom: 5px;
   text-decoration: none;
-}
-
-.footer-social a:hover {
-  text-decoration: underline;
-  color: #17A9FD; /* Promena boje prilikom prelaska mišem */
-}
-.site-footer {
-    padding: 20px;
-    background-color: #f8f8f8;
-    text-align: center;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-around; /* Raspoređuje elemente horizontalno sa razmakom između njih */
-    flex-wrap: wrap; /* Omogućava prelazak elemenata u sledeći red na manjim ekranima */
-    max-width: 1200px; /* Maksimalna širina footera */
-    margin: 0 auto; /* Centriranje footera */
-}
-
-.footer-info, .footer-hours, .footer-social {
-    flex: 1; /* Svaka sekcija zauzima isti prostor */
-    margin: 10px; /* Razmak između sekcija */
-    min-width: 250px; /* Minimalna širina da bi se lepo prikazalo na manjim ekranima */
-}
-
-.footer-bottom {
-    text-align: center;
-    padding: 10px;
-    background-color: #e0e0e0;
-    margin-top: 20px;
-}
-
-.footer-social a {
-    display: block; /* Linkovi u footer-social divu se prikazuju kao blokovi */
-    margin-bottom: 5px;
 }
 
