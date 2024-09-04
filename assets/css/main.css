@@ -4066,10 +4066,6 @@ input, select, textarea {
     text-align: center !important;
 }
 
-.footer-container, h3, h4 {
-	color: yellow !important;
-}
-
 .footer-info, .footer-hours, .footer-social {
   flex: 1;
   min-width: 250px;
