@@ -2194,7 +2194,10 @@ input, select, textarea {
 			width: 75%;
 		}
 
-	
+	footer.major {
+		margin: 4em 0 0 0;
+	}
+
 /* Form */
 
 	form {
@@ -3585,6 +3588,12 @@ input, select, textarea {
 				padding: 4.5em;
 			}
 
+		/* Footer */
+
+			#footer {
+				padding: 4.5em 0;
+			}
+
 	}
 
 /* Medium */
@@ -3672,6 +3681,12 @@ input, select, textarea {
 					#banner .content .image {
 						margin: 0;
 					}
+
+		/* Footer */
+
+			#footer {
+				padding: 4.5em 0;
+			}
 
 	}
 
@@ -3970,7 +3985,14 @@ input, select, textarea {
 				transform: translateX(0);
 			}
 
-			
+		/* Footer */
+
+			#footer {
+				padding: 3.25em 1.5em;
+			}
+
+	}
+
 /* XSmall */
 
 	@media screen and (max-width: 480px) {
