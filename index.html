@@ -33,6 +33,37 @@
             font-family: 'Roboto', sans-serif; /* Koristimo font Roboto za opise */
             font-size: 16px; /* Veličina fonta za opise */
         }
+
+     /* Stilovi za futer */
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .footer-info, .footer-hours, .footer-social {
+            width: 30%;
+        }
+
+        .footer-social a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 10px;
+            background-color: #222;
+            color: #aaa;
+        }
     </style>
 </head>
 <body class="is-preload landing">
@@ -234,6 +265,7 @@ Bilo da želite promeniti visinu žica, intonaciju ili toniranje, mi smo tu da s
 							</div>
                                         
 				</section>
+ <!-- Ovde ide ceo HTML kod za futer -->
 <footer class="site-footer">
   <div class="footer-container">
     <div class="footer-info">
@@ -254,12 +286,13 @@ Bilo da želite promeniti visinu žica, intonaciju ili toniranje, mi smo tu da s
       <a href="https://www.instagram.com/gitar_servis_kragujevac/" target="_blank">Instagram</a>
     </div>
   </div>
-  
+  </div>
   <div class="footer-bottom">
-    <p>© 2024 Gitar Servis Kragujevac. Sva prava zadržana.</p>
+    <p>&copy; 2024 Gitar Servis Kragujevac. Sva prava zadržana.</p>
   </div>
 </footer>
-							
+
+
     </div>
 
 		<!-- Scripts -->
