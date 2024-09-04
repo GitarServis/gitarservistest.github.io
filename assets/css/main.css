@@ -2194,10 +2194,6 @@ input, select, textarea {
 			width: 75%;
 		}
 
-	footer.major {
-		margin: 4em 0 0 0;
-	}
-
 /* Form */
 
 	form {
@@ -3588,12 +3584,6 @@ input, select, textarea {
 				padding: 4.5em;
 			}
 
-		/* Footer */
-
-			#footer {
-				padding: 4.5em 0;
-			}
-
 	}
 
 /* Medium */
@@ -3681,12 +3671,6 @@ input, select, textarea {
 					#banner .content .image {
 						margin: 0;
 					}
-
-		/* Footer */
-
-			#footer {
-				padding: 4.5em 0;
-			}
 
 	}
 
@@ -3985,12 +3969,6 @@ input, select, textarea {
 				transform: translateX(0);
 			}
 
-		/* Footer */
-
-			#footer {
-				padding: 3.25em 1.5em;
-			}
-
 	}
 
 /* XSmall */
@@ -4058,7 +4036,6 @@ input, select, textarea {
   flex: 1;
   min-width: 250px;
   margin-bottom: 20px;
-  text-align: center;
 }
 
 .footer-info h3, .footer-hours h4, .footer-social h4 {
@@ -4096,7 +4073,4 @@ input, select, textarea {
 .footer-social a:hover {
   text-decoration: underline;
   color: #17A9FD; /* Promena boje prilikom prelaska mišem */
-}
-
-
 
