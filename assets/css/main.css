@@ -4104,46 +4104,64 @@ input, select, textarea {
   margin-bottom: 5px;
   text-decoration: none;
 }
+/* Generalni stil za formu - koristi flex raspored sa razmakom između polja */
 form {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Razmak između elemenata */
-    max-width: 500px;
-    margin: 0 auto;
+    gap: 10px; /* Razmak između boksova */
+    max-width: 500px; /* Maksimalna širina forme */
+    margin: 0 auto; /* Centriranje forme */
 }
 
+/* Stil za input polja i textarea - zadajemo padding i boju ivice */
 input[type="text"], input[type="email"], textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+    width: 100%; /* Širina inputa 100% */
+    padding: 10px; /* Unutrašnji razmak unutar polja */
+    border: 1px solid #f3f6f4; /* Osnovna boja ivice (siva) */
+    border-radius: 4px; /* Blago zaobljene ivice */
+    font-size: 16px; /* Veličina teksta unutar input polja */
+    transition: border-color 0.3s ease; /* Glatka promena boje ivice */
 }
 
+/* Kada je input polje u fokusu, ivica postaje plava */
+input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+    border-color: #17A9FD; /* Boja ivice kada je polje u fokusu (plava) */
+    outline: none; /* Uklanja dodatni okvir (outline) */
+}
+
+/* Kada je input polje popunjeno ispravno, ivica postaje zelena */
+input[type="text"]:valid, input[type="email"]:valid, textarea:valid {
+    border-color: #00cc66; /* Boja ivice kada je polje ispravno popunjeno (zelena) */
+}
+
+/* Polja za unos poruka ne mogu se ručno povećavati */
 textarea {
-    resize: none;
+    resize: none; /* Onemogućava promenu veličine polja za unos poruke */
 }
 
+/* Placeholder tekstovi za input i textarea - sivi i manji font */
 input::placeholder, textarea::placeholder {
-    color:#e15b5b;
-    font-size: 16px;
+    color: #d9d2e9; /* Siva boja za tekst unutar praznih polja */
+    font-size: 16px; /* Veličina fonta placeholdera */
 }
 
+/* Stil za dugme za slanje (Pošalji) - izgleda kao običan tekst */
 .submit-btn {
-    border: none;
-    background: none;
-    color: #000;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: left; /* Da izgleda kao običan tekst */
-    padding: 0;
+    border: none; /* Bez ivica */
+    background: none; /* Bez pozadine */
+    color: #000; /* Crna boja teksta */
+    font-weight: bold; /* Boldovano dugme */
+    font-size: 16px; /* Veličina teksta */
+    cursor: pointer; /* Promena kursora na pokazivač */
+    text-align: left; /* Tekst je poravnat levo */
+    padding: 0; /* Bez dodatnog razmaka unutar dugmeta */
 }
 
+/* Kada se pređe mišem preko dugmeta "Pošalji", doda se podvlačenje */
 .submit-btn:hover {
     text-decoration: underline;
-
 }
+
 
 .footer-social a:hover {
   text-decoration: underline;
