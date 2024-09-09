@@ -328,6 +328,26 @@ Bilo da želite promeniti visinu žica, intonaciju ili toniranje, mi smo tu da s
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function (event) {
+        var inputs = document.querySelectorAll('#contactForm input[required], #contactForm textarea[required]');
+        var allValid = true;
+
+        inputs.forEach(function (input) {
+            if (!input.value) {
+                input.setCustomValidity("Molimo popunite ovo polje.");
+                allValid = false;
+            } else {
+                input.setCustomValidity("");
+            }
+        });
+
+        if (!allValid) {
+            event.preventDefault();
+        }
+    });
+</script>
+
 
 	</body>
 </html>
