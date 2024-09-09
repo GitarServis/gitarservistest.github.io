@@ -4112,19 +4112,21 @@ form {
     margin: 0 auto;
 }
 
-label {
-    font-weight: bold;
-}
-
 input[type="text"], input[type="email"], textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 16px;
 }
 
 textarea {
     resize: none;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #999;
+    font-size: 16px;
 }
 
 .submit-btn {
@@ -4140,6 +4142,7 @@ textarea {
 
 .submit-btn:hover {
     text-decoration: underline;
+
 }
 
 .footer-social a:hover {
