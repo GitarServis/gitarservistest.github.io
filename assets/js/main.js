@@ -249,3 +249,19 @@
 
 })(jQuery);
 
+document.addEventListener('DOMContentLoaded', function() {
+    const inputs = document.querySelectorAll('input, textarea');
+    
+    inputs.forEach(function(input) {
+        input.addEventListener('invalid', function(event) {
+            event.preventDefault();
+            input.setCustomValidity("Molimo popunite ovo polje.");
+        });
+
+        input.addEventListener('input', function(event) {
+            input.setCustomValidity('');
+        });
+    });
+});
+
+
