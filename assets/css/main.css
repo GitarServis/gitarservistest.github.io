@@ -4104,6 +4104,43 @@ input, select, textarea {
   margin-bottom: 5px;
   text-decoration: none;
 }
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Razmak između elemenata */
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea {
+    resize: none;
+}
+
+.submit-btn {
+    border: none;
+    background: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left; /* Da izgleda kao običan tekst */
+    padding: 0;
+}
+
+.submit-btn:hover {
+    text-decoration: underline;
+}
 
 .footer-social a:hover {
   text-decoration: underline;
