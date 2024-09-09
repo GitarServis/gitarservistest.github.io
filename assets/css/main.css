@@ -4141,7 +4141,7 @@ textarea {
 
 /* Placeholder tekstovi za input i textarea - sivi i manji font */
 input::placeholder, textarea::placeholder {
-    color: #d9d2e9; /* Siva boja za tekst unutar praznih polja */
+    color: #FFFFFF; /* Siva boja za tekst unutar praznih polja */
     font-size: 16px; /* Veličina fonta placeholdera */
 }
 
