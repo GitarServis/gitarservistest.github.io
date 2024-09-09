@@ -4117,7 +4117,7 @@ form {
 input[type="text"], input[type="email"], textarea {
     width: 100%; /* Širina inputa 100% */
     padding: 10px; /* Unutrašnji razmak unutar polja */
-    border: 1px solid #f3f6f4; /* Osnovna boja ivice (siva) */
+    border: 1px solid #FFFFFF; /* Osnovna boja ivice (siva) */
     border-radius: 4px; /* Blago zaobljene ivice */
     font-size: 16px; /* Veličina teksta unutar input polja */
     transition: border-color 0.3s ease; /* Glatka promena boje ivice */
@@ -4145,7 +4145,7 @@ input::placeholder, textarea::placeholder {
     font-size: 16px; /* Veličina fonta placeholdera */
 }
 
-/* Stil za dugme za slanje (Pošalji) - izgleda kao običan tekst */
+/* Stil za dugme za slanje (Pošalji) - izgleda kao običan tekst, ali boldovan */
 .submit-btn {
     border: none; /* Bez ivica */
     background: none; /* Bez pozadine */
@@ -4153,14 +4153,15 @@ input::placeholder, textarea::placeholder {
     font-weight: bold; /* Boldovano dugme */
     font-size: 16px; /* Veličina teksta */
     cursor: pointer; /* Promena kursora na pokazivač */
-    text-align: left; /* Tekst je poravnat levo */
     padding: 0; /* Bez dodatnog razmaka unutar dugmeta */
+    text-align: left; /* Tekst je poravnat levo */
 }
 
 /* Kada se pređe mišem preko dugmeta "Pošalji", doda se podvlačenje */
 .submit-btn:hover {
     text-decoration: underline;
 }
+
 
 
 .footer-social a:hover {
