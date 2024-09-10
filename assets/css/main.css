@@ -4161,6 +4161,14 @@ input::placeholder, textarea::placeholder {
 .submit-btn:hover {
     text-decoration: underline;
 }
+/* Stil za neispravna polja u formi */
+input:invalid, textarea:invalid {
+    border-color: #FF0000; /* Crvena boja ivice za neispravna polja */
+}
+
+input:invalid::placeholder, textarea:invalid::placeholder {
+    color: #FF0000; /* Crvena boja placeholder teksta za neispravna polja */
+}
 
 
 
