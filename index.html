@@ -268,7 +268,7 @@ Bilo da želite promeniti visinu žica, intonaciju ili toniranje, mi smo tu da s
 								<li><a href="#" class="button">Mob/WhatsApp/Viber 061 611 75 26</a></li>
 							</ul>
 							</div>
-<form action="mailto:gitarserviskg@gmail.com" method="post" enctype="text/plain">
+<form id="contactForm" action="mailto:gitarserviskg@gmail.com" method="post" enctype="text/plain">
     <h2>Kontaktirajte nas</h2>
 
     <!-- Polje za unos imena sa placeholder tekstom "Ime" -->
@@ -283,6 +283,7 @@ Bilo da želite promeniti visinu žica, intonaciju ili toniranje, mi smo tu da s
     <!-- Dugme za slanje sa tekstom "Pošalji" koje je boldovano -->
     <input type="submit" value="Pošalji" class="submit-btn">
 </form>
+
 
 
 
@@ -330,22 +331,23 @@ Bilo da želite promeniti visinu žica, intonaciju ili toniranje, mi smo tu da s
 			<script src="assets/js/main.js"></script>
 <script>
     document.getElementById('contactForm').addEventListener('submit', function (event) {
-        var inputs = document.querySelectorAll('#contactForm input[required], #contactForm textarea[required]');
-        var allValid = true;
+    var inputs = document.querySelectorAll('#contactForm input[required], #contactForm textarea[required]');
+    var allValid = true;
 
-        inputs.forEach(function (input) {
-            if (!input.value) {
-                input.setCustomValidity("Molimo popunite ovo polje.");
-                allValid = false;
-            } else {
-                input.setCustomValidity("");
-            }
-        });
-
-        if (!allValid) {
-            event.preventDefault();
+    inputs.forEach(function (input) {
+        if (!input.value) {
+            input.setCustomValidity("Molimo popunite ovo polje.");
+            allValid = false;
+        } else {
+            input.setCustomValidity("");
         }
     });
+
+    if (!allValid) {
+        event.preventDefault();
+    }
+});
+
 </script>
 <style>
     /* Stil za kontakt formu */
