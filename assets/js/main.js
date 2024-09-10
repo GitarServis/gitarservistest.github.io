@@ -250,15 +250,28 @@
 })(jQuery);
 
 document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form');
     const inputs = document.querySelectorAll('input, textarea');
-    
-    inputs.forEach(function(input) {
-        input.addEventListener('invalid', function(event) {
-            event.preventDefault();
-            input.setCustomValidity("Molimo popunite ovo polje.");
+
+    form.addEventListener('submit', function(event) {
+        let isValid = true;
+
+        inputs.forEach(function(input) {
+            if (!input.checkValidity()) {
+                isValid = false;
+                input.setCustomValidity("Molimo popunite ovo polje.");
+            } else {
+                input.setCustomValidity('');
+            }
         });
 
-        input.addEventListener('input', function(event) {
+        if (!isValid) {
+            event.preventDefault(); // Spreči slanje forme ako ima grešaka
+        }
+    });
+
+    inputs.forEach(function(input) {
+        input.addEventListener('input', function() {
             input.setCustomValidity('');
         });
     });
