@@ -4085,7 +4085,7 @@ input, select, textarea {
 }
 
 .footer-social a:hover {
-  text-decoration: underline;
+  text-decoration: no underline;
 }
 
 .footer-bottom {
