@@ -4183,4 +4183,8 @@ input:invalid::placeholder, textarea:invalid::placeholder {
   text-decoration: underline;
   color: #17A9FD; /* Promena boje prilikom prelaska mišem */
 
+	img { max-width: 100%; height: auto; loading: lazy; }
+@media (max-width: 768px) { img { width: 100%; } }
+
+
 
