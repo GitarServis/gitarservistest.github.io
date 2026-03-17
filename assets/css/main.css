@@ -4175,3 +4175,12 @@ input:invalid::placeholder, textarea:invalid::placeholder {
 .footer-social a:hover {
   text-decoration: underline;
   color: #17A9FD; /* Promena boje prilikom prelaska mišem */
+
+
+	/* Responsive font za mobilni */
+@media screen and (max-width: 768px) {
+  body { font-size: 14px !important; }
+  h1, h2, h3 { font-size: 20px !important; }
+  p, .contact-text { font-size: 13px !important; line-height: 1.4; }
+}
+
